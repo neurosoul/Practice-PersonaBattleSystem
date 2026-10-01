@@ -1,0 +1,63 @@
+﻿// dont bully me I'm LEARNING.
+
+/*
+Console.WriteLine("Here is your bill, sir... \n > How much is Mr. Krabs' bill?");
+
+int dollas = Convert.ToInt32(Console.ReadLine());
+
+Console.WriteLine(dollas + " dollas?!?! Man get this outta my face!");
+Console.WriteLine("My apologies, sir... THIS is your bill. \n > How many times more should his true bill be?");
+
+int dollasMult = Convert.ToInt32(Console.ReadLine());
+int finalBill = dollas * dollasMult;
+
+Console.WriteLine($"Mr. Krabs views his new bill of ${finalBill}");
+Console.WriteLine($"Mr. Krabs screams, and shatters the restaurant. He should not have spent ${finalBill}.");
+
+*/
+using System.Security.Cryptography;
+
+
+
+//
+Random eihaDamage = new Random();
+Random agiDamage = new Random();
+Random knifeDamage = new Random();
+
+int enemyHP = 150;
+
+do
+{
+    Console.WriteLine("A Jack Frost is before you! \nWhat will you do? \n > (1) Persona (2) Attack ");
+
+    int playerTurn = Convert.ToInt32(Console.ReadLine());
+
+    if (playerTurn == 1)
+    {
+        Console.WriteLine("Persona! \n > (3) Eiha (4) Agi");
+        int personaChoice = Convert.ToInt32(Console.ReadLine());
+        if (personaChoice == 3)
+        {
+            int eiha = eihaDamage.Next(20, 41);
+            Console.WriteLine($"{eiha} Damage!");
+            enemyHP -= eiha;
+            Console.WriteLine($"{enemyHP} Health remaining!\n");
+        }
+
+        else if (personaChoice == 4)
+        {
+            int agi = agiDamage.Next(40, 61);
+            Console.WriteLine($"WEAK! {agi} Damage!");
+            enemyHP -= agi;
+            Console.WriteLine($"{enemyHP} Health Remaining! \n1 MORE!\n");
+        }
+    }
+
+    else if (playerTurn == 2)
+    {
+        int knife = knifeDamage.Next(12, 22);
+        Console.WriteLine($"{knife} Damage!");
+        enemyHP -= knife;
+        Console.WriteLine($"{enemyHP} Health Remaining!\n");
+    }
+} while (enemyHP > 0);
