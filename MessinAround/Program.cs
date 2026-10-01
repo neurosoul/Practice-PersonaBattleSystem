@@ -15,6 +15,7 @@ Console.WriteLine($"Mr. Krabs views his new bill of ${finalBill}");
 Console.WriteLine($"Mr. Krabs screams, and shatters the restaurant. He should not have spent ${finalBill}.");
 
 */
+using System.Diagnostics.CodeAnalysis;
 using System.Security.Cryptography;
 
 
@@ -34,7 +35,7 @@ do
 
     if (playerTurn == 1)
     {
-        Console.WriteLine("Persona! \n > (3) Eiha (4) Agi");
+        Console.WriteLine("Persona! \nAbilities: \n > (3) Eiha (4) Agi");
         int personaChoice = Convert.ToInt32(Console.ReadLine());
         if (personaChoice == 3)
         {
@@ -61,3 +62,13 @@ do
         Console.WriteLine($"{enemyHP} Health Remaining!\n");
     }
 } while (enemyHP > 0);
+
+Random xp = new Random();
+Random money = new Random();
+
+if (enemyHP < 0)
+{
+    int xpGained = xp.Next(50, 71);
+    int moneyGained = money.Next(100, 136);
+    Console.WriteLine($"Victory!\nXP: {xpGained}\nMONEY:{moneyGained}");
+};
