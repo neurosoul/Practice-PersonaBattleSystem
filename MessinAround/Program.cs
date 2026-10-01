@@ -24,8 +24,11 @@ using System.Security.Cryptography;
 Random eihaDamage = new Random();
 Random agiDamage = new Random();
 Random knifeDamage = new Random();
+Random enemyDamage = new Random();
+
 
 int enemyHP = 150;
+int jokerHP = 200;
 
 do
 {
@@ -43,6 +46,11 @@ do
             Console.WriteLine($"{eiha} Damage!");
             enemyHP -= eiha;
             Console.WriteLine($"{enemyHP} Health remaining!\n");
+
+            int bufu = enemyDamage.Next(35, 56);
+            Console.WriteLine($"Jack Frost Uses Bufu!\n{bufu} damage!");
+            jokerHP -= bufu;
+            Console.WriteLine($"You have {jokerHP} HP.\n");
         }
 
         else if (personaChoice == 4)
@@ -60,15 +68,25 @@ do
         Console.WriteLine($"{knife} Damage!");
         enemyHP -= knife;
         Console.WriteLine($"{enemyHP} Health Remaining!\n");
+
+        int bufu = enemyDamage.Next(35, 56);
+        Console.WriteLine($"Jack Frost Uses Bufu!\n{bufu} damage!");
+        jokerHP -= bufu;
+        Console.WriteLine($"You have {jokerHP} HP.\n");
     }
-} while (enemyHP > 0);
+} while (enemyHP > 0 && jokerHP > 0);
+
 
 Random xp = new Random();
 Random money = new Random();
 
-if (enemyHP < 0)
+if (enemyHP <= 0)
 {
     int xpGained = xp.Next(50, 71);
     int moneyGained = money.Next(100, 136);
     Console.WriteLine($"Victory!\nXP: {xpGained}\nMONEY:{moneyGained}");
-};
+}
+    else if (jokerHP <= 0)
+    {
+        Console.WriteLine("Defeat...");
+    };
