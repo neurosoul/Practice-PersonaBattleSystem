@@ -19,12 +19,14 @@ using System.Diagnostics.CodeAnalysis;
 using System.Security.Cryptography;
 
 
-
-//
+// actual battle system starts here.
 Random eihaDamage = new Random();
 Random agiDamage = new Random();
 Random knifeDamage = new Random();
 Random enemyDamage = new Random();
+
+Random BulletsFired = new Random();
+Random BulletsDamage = new Random();
 
 
 int enemyHP = 150;
@@ -32,15 +34,15 @@ int jokerHP = 200;
 
 do
 {
-    Console.WriteLine("A Jack Frost is before you! \nWhat will you do? \n > (1) Persona (2) Attack ");
+    Console.WriteLine("A Jack Frost is before you! \nWhat will you do? \n > (1) Persona (2) Attack (3) Gun");
 
     int playerTurn = Convert.ToInt32(Console.ReadLine());
 
     if (playerTurn == 1)
     {
-        Console.WriteLine("Persona! \nAbilities: \n > (3) Eiha (4) Agi");
+        Console.WriteLine("Persona! \nAbilities: \n > (4) Eiha (5) Agi");
         int personaChoice = Convert.ToInt32(Console.ReadLine());
-        if (personaChoice == 3)
+        if (personaChoice == 4)
         {
             int eiha = eihaDamage.Next(20, 41);
             Console.WriteLine($"{eiha} Damage!");
@@ -53,7 +55,7 @@ do
             Console.WriteLine($"You have {jokerHP} HP.\n");
         }
 
-        else if (personaChoice == 4)
+        else if (personaChoice == 5)
         {
             int agi = agiDamage.Next(40, 61);
             Console.WriteLine($"WEAK! {agi} Damage!");
@@ -67,6 +69,21 @@ do
         int knife = knifeDamage.Next(12, 22);
         Console.WriteLine($"{knife} Damage!");
         enemyHP -= knife;
+        Console.WriteLine($"{enemyHP} Health Remaining!\n");
+
+        int bufu = enemyDamage.Next(35, 56);
+        Console.WriteLine($"Jack Frost Uses Bufu!\n{bufu} damage!");
+        jokerHP -= bufu;
+        Console.WriteLine($"You have {jokerHP} HP.\n");
+    }
+
+    else if (playerTurn == 3)
+    {
+        int bullets = BulletsFired.Next(1, 9);
+        int gunDamage = BulletsDamage.Next(8, 21);
+        int gunDamageTotal = bullets * gunDamage;
+        Console.WriteLine($"You fired {bullets} bullets and dealt {gunDamageTotal} Damage!");
+        enemyHP -= gunDamageTotal;
         Console.WriteLine($"{enemyHP} Health Remaining!\n");
 
         int bufu = enemyDamage.Next(35, 56);
