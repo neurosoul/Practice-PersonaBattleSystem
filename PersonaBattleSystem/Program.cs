@@ -80,7 +80,7 @@ do
     else if (playerTurn == 3)
     {
         int bullets = BulletsFired.Next(1, 9);
-        int gunDamage = BulletsDamage.Next(8, 21);
+        int gunDamage = BulletsDamage.Next(8, 20);
         int gunDamageTotal = bullets * gunDamage;
         Console.WriteLine($"You fired {bullets} bullets and dealt {gunDamageTotal} Damage!");
         enemyHP -= gunDamageTotal;
