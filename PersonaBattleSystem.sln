@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.0.31903.59
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MessinAround", "MessinAround\MessinAround.csproj", "{0C405419-D912-4F79-BCB5-214FD6F96C87}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PersonaBattleSystem", "PersonaBattleSystem\PersonaBattleSystem.csproj", "{0C405419-D912-4F79-BCB5-214FD6F96C87}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
