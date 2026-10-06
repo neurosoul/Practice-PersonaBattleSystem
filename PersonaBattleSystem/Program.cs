@@ -16,6 +16,8 @@ Console.WriteLine($"Mr. Krabs screams, and shatters the restaurant. He should no
 
 */
 using System.Diagnostics.CodeAnalysis;
+using System.Net;
+using System.Net.NetworkInformation;
 using System.Security.Cryptography;
 
 
@@ -23,8 +25,6 @@ using System.Security.Cryptography;
 Random eihaDamage = new Random();
 Random agiDamage = new Random();
 Random knifeDamage = new Random();
-Random enemyDamage = new Random();
-
 Random BulletsFired = new Random();
 Random BulletsDamage = new Random();
 
@@ -49,10 +49,7 @@ do
             enemyHP -= eiha;
             Console.WriteLine($"{enemyHP} Health remaining!\n");
 
-            int bufu = enemyDamage.Next(35, 56);
-            Console.WriteLine($"Jack Frost Uses Bufu!\n{bufu} damage!");
-            jokerHP -= bufu;
-            Console.WriteLine($"You have {jokerHP} HP.\n");
+            enemyAttack();
         }
 
         else if (personaChoice == 5)
@@ -71,10 +68,7 @@ do
         enemyHP -= knife;
         Console.WriteLine($"{enemyHP} Health Remaining!\n");
 
-        int bufu = enemyDamage.Next(35, 56);
-        Console.WriteLine($"Jack Frost Uses Bufu!\n{bufu} damage!");
-        jokerHP -= bufu;
-        Console.WriteLine($"You have {jokerHP} HP.\n");
+        enemyAttack();
     }
 
     else if (playerTurn == 3)
@@ -86,14 +80,13 @@ do
         enemyHP -= gunDamageTotal;
         Console.WriteLine($"{enemyHP} Health Remaining!\n");
 
-        int bufu = enemyDamage.Next(35, 56);
-        Console.WriteLine($"Jack Frost Uses Bufu!\n{bufu} damage!");
-        jokerHP -= bufu;
-        Console.WriteLine($"You have {jokerHP} HP.\n");
+        enemyAttack();
     }
 } while (enemyHP > 0 && jokerHP > 0);
 
 
+
+// RESULTS SCREEN
 Random xp = new Random();
 Random money = new Random();
 
@@ -103,7 +96,46 @@ if (enemyHP <= 0)
     int moneyGained = money.Next(100, 136);
     Console.WriteLine($"Victory!\nXP: {xpGained}\nMONEY:{moneyGained}");
 }
-    else if (jokerHP <= 0)
+else if (jokerHP <= 0)
+{
+    Console.WriteLine("Defeat...");
+};
+
+
+
+
+//ENEMY ATTACK SYSTEM
+void enemyAttack()
+{ 
+    Random enemyAttackRand = new Random();
+    Random bufuDamage = new Random();
+    Random punchDamage = new Random();
+    Random healingHP = new Random();
+
+
+    int enemyTurn = enemyAttackRand.Next(1, 4);
+
+    if(enemyTurn == 1)
     {
-        Console.WriteLine("Defeat...");
-    };
+        int bufu = bufuDamage.Next(35, 56);
+        Console.WriteLine($"Jack Frost Uses Bufu!\n{bufu} damage!");
+        jokerHP -= bufu;
+        Console.WriteLine($"You have {jokerHP} HP.\n");
+    }
+
+    else if(enemyTurn == 2)
+    {
+        int enemyPunch = punchDamage.Next(25, 36);
+        Console.WriteLine($"Jack Frost Attacks!\n{enemyPunch} damage!");
+        jokerHP -= enemyPunch;
+        Console.WriteLine($"You have {jokerHP} HP.\n");
+    }
+
+    else if(enemyTurn == 3)
+    {
+        int dia = healingHP.Next(28, 39);
+        Console.WriteLine($"Jack Frost Uses Dia!\n{dia} health restored.");
+        enemyHP += dia;
+        Console.WriteLine($"Jack Frost now has {enemyHP} HP.\n");
+    }
+};
