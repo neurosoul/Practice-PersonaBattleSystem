@@ -15,6 +15,7 @@ Console.WriteLine($"Mr. Krabs views his new bill of ${finalBill}");
 Console.WriteLine($"Mr. Krabs screams, and shatters the restaurant. He should not have spent ${finalBill}.");
 
 */
+using System.Data;
 using System.Diagnostics.CodeAnalysis;
 using System.Net;
 using System.Net.NetworkInformation;
@@ -28,10 +29,11 @@ Random knifeDamage = new Random();
 Random BulletsFired = new Random();
 Random BulletsDamage = new Random();
 
-
 int enemyHP = 150;
 int jokerHP = 200;
 
+
+enemyRandomizer();
 do
 {
     Console.WriteLine("A Jack Frost is before you! \nWhat will you do? \n > (1) Persona (2) Attack (3) Gun");
@@ -49,7 +51,7 @@ do
             enemyHP -= eiha;
             Console.WriteLine($"{enemyHP} Health remaining!\n");
 
-            enemyAttack();
+            jackAttack();
         }
 
         else if (personaChoice == 5)
@@ -68,7 +70,7 @@ do
         enemyHP -= knife;
         Console.WriteLine($"{enemyHP} Health Remaining!\n");
 
-        enemyAttack();
+        jackAttack();
     }
 
     else if (playerTurn == 3)
@@ -80,7 +82,7 @@ do
         enemyHP -= gunDamageTotal;
         Console.WriteLine($"{enemyHP} Health Remaining!\n");
 
-        enemyAttack();
+        jackAttack();
     }
 } while (enemyHP > 0 && jokerHP > 0);
 
@@ -101,11 +103,29 @@ else if (jokerHP <= 0)
     Console.WriteLine("Defeat...");
 };
 
+//ENEMY RANDOMIZER
+void enemyRandomizer()
+{
+    Random enemySelect = new Random();
+    int enemy = enemySelect.Next(1, 4);
 
+    if(enemy == 1)
+    {
+        jackAttack();
+    }
+    else if(enemy == 2)
+    {
+        //enemy 2 attack method
+    }
+    else if(enemy == 3)
+    {
+        //enemy 3 attack method
+    }
+}
 
 
 //ENEMY ATTACK SYSTEM
-void enemyAttack()
+void jackAttack()
 { 
     Random enemyAttackRand = new Random();
     Random bufuDamage = new Random();
@@ -136,6 +156,6 @@ void enemyAttack()
         int dia = healingHP.Next(28, 39);
         Console.WriteLine($"Jack Frost Uses Dia!\n{dia} health restored.");
         enemyHP += dia;
-        Console.WriteLine($"Jack Frost now has {enemyHP} HP.\n");
+        Console.WriteLine($"Jack Frost now has {enemyHP} HP\n");
     }
 };
